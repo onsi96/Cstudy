@@ -1,1 +1,33 @@
+#include<stdio.h>
+#include <stdlib.h>                             // 랜덤함수 헤더파일
+int main()
+{
+    // 변수 설정
+    char name[20];
+    int Exp = 0;
+    int level = 0;
 
+    while(level < 2)                    // 나중에 ture로 무한반복해서 99렙이나 1렙 이하일때 브레이크로 나오자
+    {
+        for(int stage = 1; stage < 6; stage++)
+        {
+            for(int event = 0; event < 6; event++)
+            {          
+                Exp = rand() % 7001 - 3500;         // -3500 ~ +3500까지 랜덤하게 뽑아준다
+                printf("%d\n", Exp);
+
+                if(event == 5)
+                {
+                    Exp = (rand() % 7001 - 3500);
+                    Exp = Exp * (((float)(rand() % 40) / 10) + 1);   // 기존 exp에 보스 추가경험치곱 1.0~5.0래덤한 값 곱
+                    printf("보스의 경험치는 %.1f입니다.", (float)Exp);
+                }
+            }
+        }
+        level++;
+        printf("\n");
+    }
+    // printf("%d\n", Exp);
+    printf("종료!");
+    return 0;
+}
